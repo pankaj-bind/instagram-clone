@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG with Fixed Size and Image</title>
+    <style>
+        .story-container {
+            position: relative;
+            height: 100px;
+            width: 86px;
+            background-color: transparent;
+            border: 0px; 
+        }
+        .user-pic{
+            top: 6px;
+            left: 11px;
+            border-radius: 100%;
+            position: absolute;
+            height: 64px;
+        }
+        .user-name{
+            position: absolute;
+            font-size: 12px;
+            top: 80px;
+        }
+        .overlay {    
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .large-image {
+            width: 538px;
+            height: 958px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Added position:relative */
+        }
+        .large-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .close-button {
+            position: absolute;
+            top: 27px;
+            right: 27px;
+            background: none;
+            border: none;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .loader-container {
+            position: absolute; /* Added position:absolute */
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            width: 100%;
+            height: 4px; /* Added height */
+            background: rgba(255, 255, 255, 0.7); /* Added background */
+            border-radius: 10px;
+        }
+
+        .loader-line {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: #cf1b1b;
+            border-radius: 10px;
+        }
+
+        @keyframes loader-animation {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .play-button {
+            font-size: 50px;
+            color: #b31b1b;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="story-container" onclick="showLargeImage('../images/humourpur_1699104745165.jpeg')">
+        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="37" cy="37" r="35" fill="none" stroke="url(#gradient)" stroke-width="2.3" />
+            <defs>
+                <linearGradient id="gradient">
+                    <stop offset="0%" style="stop-color: rgb(255, 0, 119);" />
+                    <stop offset="100%" style="stop-color: rgb(255, 136, 0);" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <img src="../images/humourpur_1699104745165.jpeg" alt="" class="user-pic">
+        <div class="user-name">_pankaj_bind</div>
+    </button>
+
+    <div class="overlay" id="overlay">
+        <button class="close-button" onclick="hideLargeImage('../images/')">&times;</button>
+        <div class="large-image">
+            <img src="" alt="">
+            <div class="loader-container">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLargeImage(imageSrc) {
+            var overlay = document.getElementById("overlay");
+            var loaderLine = overlay.querySelector(".loader-line");
+            loaderLine.style.animation = "loader-animation 10s linear forwards"; // Set animation for 10 seconds
+            overlay.style.display = "flex";
+            overlay.querySelector("img").src = imageSrc;
+
+            // Hide large image after 10 seconds
+            setTimeout(function() {
+                hideLargeImage();
+            }, 10000); // 10000 milliseconds = 10 seconds
+        }
+
+        function hideLargeImage() {
+            var overlay = document.getElementById("overlay");
+            var loaderLine = overlay.querySelector(".loader-line");
+            loaderLine.style.animation = ""; // Reset animation
+            overlay.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

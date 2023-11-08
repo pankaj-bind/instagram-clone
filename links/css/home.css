@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -13,15 +13,14 @@ body {
   
   .left-sidebar {
     width: 245px;
-    background-color: #333;
+    background-color: #000000;
     color: #fff;
-    padding: 20px;
+    padding: 12px;
     box-sizing: border-box;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    overflow-y: auto;
   }
   
   .left-sidebar a {
@@ -57,7 +56,9 @@ body {
     padding: 20px;
     border-radius: 10px;
   }
-  
+  .instaimg{
+    display: none;
+  }
   .popup-content a {
     display: block;
     color: #333;
@@ -101,7 +102,57 @@ body {
   .bottom-navbar {
     display: none;
   }
-  
+ 
+ .moreSvg{
+    margin-right: 19px;
+    margin-left: 13px;
+  }
+  .name-logo{
+    height: 57px;
+    width: 220px;
+    padding: 25px 12px 0px 12px;
+  }
+
+
+  #left-icon{
+    display: flex;
+  }
+  .left-svg-icon, .left-profile-image{
+    margin-right: 19px;
+    margin-left: 13px;
+  }
+  .nav-name{
+    font-size: 16px;
+    font-weight: 700;
+    
+  }
+  .left-profile-image{
+    height: 24px;
+    border-radius: 100px;
+  }
+  #left-icon, #moreLink{
+    display: flex;
+    text-decoration: none;
+    border: 1px solid #000000;
+    height: 35px;
+    max-width: 100%;
+    padding-top: 10px;
+    border-radius: 8px;
+  }
+  #moreLink{
+    width: 217px;
+  }
+#left-icon:hover{
+  background-color: #1a1a1a;
+}
+#moreLink:hover{
+  background-color: #1a1a1a;
+}
+.nav-name:visited{
+  color: #fff;
+}
+
+  /* responsiveness */
   @media (max-width: 940px) {
     .right-sidebar {
       display: none;
@@ -117,17 +168,33 @@ body {
   }
   
   @media (max-width: 800px) {
-    .right-sidebar {
+    .name-logo{
+      background-image: url(../images/instagram-logo.png);
+      background-repeat: no-repeat;
+      background-size: 45px;
+      background-position: center;
+    }
+    .name-logo-insta{
       display: none;
     }
-  
+    
+    .right-sidebar, .nav-name {
+      display: none;
+    }
     .left-sidebar {
       width: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-  
+    #moreLink{
+      display: flex;
+      width: 57px;
+    }
+    
     .middle-content {
       margin-left: 90px;
-      margin-right: 0; /* Adjust margin for small screens */
+      margin-right: 0; /* Adjustpx margin for small screens */
     }
   }
   
@@ -170,4 +237,3 @@ body {
       text-decoration: underline;
     }
   }
-  
