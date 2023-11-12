@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Image Scroll</title>
+    <style>
+        .gallery-container {
+            width: 600px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            white-space: nowrap;
+            transition: transform 0.3s;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        .left-arrow {
+            left: 10px;
+        }
+
+        .right-arrow {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            <img src="../images/profile_pic.jpg" alt="Image 1">
+            
+        </div>
+        <div class="arrow left-arrow">&larr;</div>
+        <div class="arrow right-arrow">&rarr;</div>
+    </div>
+
+    
+</body>
+</html>
